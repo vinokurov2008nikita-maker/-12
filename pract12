@@ -1,0 +1,130 @@
+using System;
+public class Calculator
+{
+    public static double Add(double a, double b) => a + b;
+    public static double Subtract(double a, double b) => a - b;
+    public static double Multiply(double a, double b) => a * b;
+
+    public static double Divide(double a, double b)
+    {
+        if (b == 0)
+        {
+            Console.WriteLine("Ошибка: деление на ноль!");
+            return 0;
+        }
+        return a / b;
+    }
+}
+// Задание 2
+
+public class ProgramConfig
+{
+    public co[]nst string Version = "1.0";
+    public const string Developer = "Иванов";
+
+    public static void PrintInfo()
+    {
+        Console.WriteLine($"Версия: {Version}");
+        Console.WriteLine($"Разработчик: {Developer}");
+    }
+}
+
+
+
+
+
+
+// Задание 3
+
+public class ObjectCounter
+{
+    private static int count = 0;
+
+    public ObjectCounter()
+    {
+        count++;
+    }
+
+    public static void PrintCount()
+    {
+        Console.WriteLine($"Создано объектов: {count}");
+    }
+}
+//Задание 4
+
+public class Book
+{
+    private readonly string isbn;
+    public string Title { get; set; }
+    public string Author { get; set; }
+
+    public Book(string isbn, string title, string author)
+    {
+        this.isbn = isbn;
+        Title = title;
+        Author = author;
+    }
+
+    public void PrintInfo()
+    {
+        Console.WriteLine($"ISBN: {isbn}");
+        Console.WriteLine($"Название: {Title}");
+        Console.WriteLine($"Автор: {Author}");
+    }
+}
+
+//Задание 5
+
+public class Settings
+{
+    private static readonly string configPath;
+
+    static Settings()
+    {
+        configPath = "C:\\config\\app.config";
+    }
+    public static void PrintPath()
+    {
+        Console.WriteLine($"Путь к конфигурации: {configPath}");
+    }
+
+
+//Задание 6
+
+using System;
+class Program
+{
+    static void Main()
+    {
+        
+        Console.WriteLine("=== Calculator ===");
+        Console.WriteLine($"5 + 3 = {Calculator.Add(5, 3)}");
+        Console.WriteLine($"5 - 3 = {Calculator.Subtract(5, 3)}");
+        Console.WriteLine($"5 * 3 = {Calculator.Multiply(5, 3)}");
+        Console.WriteLine($"5 / 3 = {Calculator.Divide(5, 3)}");
+        Calculator.Divide(5, 0);
+
+       
+        Console.WriteLine("\n=== ProgramConfig ===");
+        ProgramConfig.PrintInfo();
+
+        
+        Console.WriteLine("\n=== ObjectCounter ===");
+        ObjectCounter.PrintCount();
+        var obj1 = new ObjectCounter();
+        var obj2 = new ObjectCounter();
+        var obj3 = new ObjectCounter();
+        ObjectCounter.PrintCount();
+
+      
+        Console.WriteLine("\n=== Book ===");
+        var book = new Book("123-456-789", "Война и мир", "Лев Толстой");
+        book.PrintInfo();
+
+       
+        Console.WriteLine("\n=== Settings ===");
+        Settings.PrintPath();
+
+        Console.ReadLine();
+    }
+}
